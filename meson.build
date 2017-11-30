@@ -41,7 +41,7 @@ config_h.set_quoted('FALLBACK_SVG_NAME', 'fallback.svg')
 libratbag_data_dir = join_paths(get_option('prefix'),
 				get_option('datadir'),
 				'libratbag')
-libratbag_data_dir_devel = join_paths(meson.source_root(), 'data', 'devices')
+libratbag_data_dir_devel = join_paths(meson.source_root(), 'data')
 config_h.set_quoted('LIBRATBAG_DATA_DIR', libratbag_data_dir)
 
 # dependencies
@@ -271,11 +271,12 @@ data_files = files(
 	'data/devices/logitech-T650.device',
 	'data/devices/logitech-Wireless-Touchpad.device',
 	'data/devices/roccat-kone-xtd.device',
+	'data/devices/steelseries-kinzu-v2.device',
 	'data/devices/steelseries-rival-310.device',
 )
 
 install_data(data_files,
-	     install_dir : join_paths(get_option('datadir'), 'libratbag'))
+	     install_dir : join_paths(get_option('datadir'), 'libratbag', 'devices'))
 
 data_parse_test = find_program(join_paths(meson.source_root(), 'data/devices/data-parse-test.py'))
 test('data-parse-test', data_parse_test,
@@ -297,6 +298,7 @@ gnome_svg_files = files(
 	'data/gnome/logitech-g9.svg',
 	'data/gnome/logitech-g900.svg',
 	'data/gnome/roccat-kone-xtd.svg',
+	'data/gnome/steelseries-kinzu-v2.svg',
 	'data/gnome/steelseries-rival310.svg',
 )
 install_data(gnome_svg_files,
